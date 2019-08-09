@@ -14,3 +14,9 @@ $ git branch -a
 ```
 $ git checkout -b branchname remotes/origin/branchname
 ```
+
+MacでGitHubのアカウントを切り替えた際, .gitconfigなどは[新アカウント]に更新されているのに  
+git pushの際にPermission denied [旧アカウント]が出るばあいの対処法  
+```
+[キーチェーンアクセス]を開き, github.comを削除する
+```
