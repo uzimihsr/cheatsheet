@@ -20,3 +20,6 @@ git pushの際にPermission denied [旧アカウント]が出るばあいの対�
 ```
 [キーチェーンアクセス]を開き, github.comを削除する
 ```
+
+やべーやつ
+https://pypi.org/project/Unidecode/
