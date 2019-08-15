@@ -23,3 +23,8 @@ git pushの際にPermission denied [旧アカウント]が出るばあいの対�
 
 やべーやつ
 https://pypi.org/project/Unidecode/
+
+dockerでビルド時になまえ(リポジトリ名/タグ)をつける, 命名規則わからぬ
+```
+$ docker build -t repo/tag .
+```
