@@ -26,5 +26,10 @@ https://pypi.org/project/Unidecode/
 
 dockerでビルド時になまえ(リポジトリ名/タグ)をつける, 命名規則わからぬ
 ```
-$ docker build -t repo/tag .
+$ docker build -t name:tag .
+```
+
+タグつけない場合(そんなのあるのか?)
+```
+$ docker build -t name .
 ```
