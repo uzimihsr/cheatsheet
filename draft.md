@@ -33,3 +33,5 @@ $ docker build -t name:tag .
 ```
 $ docker build -t name .
 ```
+
+treeコマンド便利そう
