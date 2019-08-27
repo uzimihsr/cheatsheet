@@ -35,3 +35,10 @@ $ docker build -t name .
 ```
 
 treeコマンド便利そう
+
+Chromeの言語変更 on Mac
+```
+$ defaults write com.google.Chrome AppleLanguages '(en-US)'
+
+$ defaults write com.google.Chrome AppleLanguages '(ja-JP)'
+```
