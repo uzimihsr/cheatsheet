@@ -42,3 +42,10 @@ $ defaults write com.google.Chrome AppleLanguages '(en-US)'
 
 $ defaults write com.google.Chrome AppleLanguages '(ja-JP)'
 ```
+
+goenvを使っている場合
+```
+$ goenv rehash
+$ exec $SHELL
+```
+しないとGOPATHが変更されない
