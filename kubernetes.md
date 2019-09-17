@@ -35,10 +35,13 @@ $ kubectl delete pod pod-abc
 $ kubectl get all
 ```
 
-## pod
+## Pod
 ```
 # podの一覧表示
 $ kubectl get pods
+
+# podの状態をyaml形式で出力(pod-abcを見る)
+$ kubectl get pods pod-abc -o yaml
 
 # 作成されたpodの編集(vimでpod-abcを編集する場合)
 $ export EDITOR=vim
@@ -59,4 +62,28 @@ $ kubectl cp localfile pod-abc:/tmp/newfile
 # コンテナへのポート転送(localhost:8888をpod-abcの80へ転送)
 # Ctrl + Cで終了
 $ kubectl port-forward pod-abc 8888:80
+```
+
+## ReplicaSet
+```
+# ReplicaSetの詳細情報を見る(rs-abcを見る)
+$ kubectl describe rs rs-abc
+
+# レプリカ数の変更(rs-abcのレプリカ数を5に変更)
+$ kubectl scale rs rs-abc --replicas 5
+```
+
+## Deployment
+```
+# コンテナイメージを更新する(deployment-abcで使用するイメージnginx-containerをnginx:1.13に更新する)
+$ kubectl set image deployment deployment-abc nginx-container=nginx:1.13
+
+# アップデートの状況を見る(deployment-abcの状況を見る)
+$ kubectl rollout status deployment deployment-abc
+
+# アップデート履歴を見る(deployment-abcの履歴を見る)
+$ kubectl rollout history deployment deployment-abc
+
+# 1つ前のrevisionにロールバックする
+$ kubectl rollout undo deployment deployment-abc
 ```
