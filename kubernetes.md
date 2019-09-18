@@ -87,3 +87,9 @@ $ kubectl rollout history deployment deployment-abc
 # 1つ前のrevisionにロールバックする
 $ kubectl rollout undo deployment deployment-abc
 ```
+
+## CronJob
+```
+# CronJobを一時停止する
+$ kubectl patch cronjob cronjob-abc -p '{"spec":{"suspend":true}}'
+```
