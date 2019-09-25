@@ -1,25 +1,22 @@
 # Docker cheatsheet
 
-###### イメージのビルド
-dockerでビルド時になまえ(リポジトリ名/タグ)をつける.  
+## image
 ```
-# 現在のディレクトリにあるDockerfileを使う場合
+# 現在のディレクトリにあるDockerfileでイメージをビルド
 $ docker build -t name:tag .
-# Dockerfileを指定する場合
-$ docker build -t name:tag -f Dockerfile-01
+
+# Dockerfileを指定してイメージをビルド(Dockerfile-sampleを使用する例)
+$ docker build -t name:tag -f Dockerfile-sample
 ```
 
-###### コンテナ一覧の確認
+## container
 ```
+# コンテナ一覧の確認
 $ docker ps -a
-```
 
-###### コンテナの停止
-```
-$ docker stop container_id
-```
+# コンテナの停止(コンテナIDがCONTAINER_IDのものを停止)
+$ docker stop CONTAINER_ID
 
-###### コンテナの削除
-```
-$ docker rm container_id
+# コンテナの削除(コンテナIDがCONTAINER_IDのものを削除)
+$ docker rm CONTAINER_ID
 ```
