@@ -18,3 +18,9 @@ $ defaults write com.google.Chrome AppleLanguages '(en-US)'
 
 $ defaults write com.google.Chrome AppleLanguages '(ja-JP)'
 ```
+
+clipy
+https://clipy-app.com/
+
+bitwarden
+https://bitwarden.com/
