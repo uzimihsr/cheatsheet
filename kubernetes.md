@@ -4,7 +4,7 @@
 ```
 # zshで補完を効かせる
 $ source <(kubectl completion zsh)
-$ echo 'source <(kubectl completion zsh)' >> ~/.zprofile
+$ echo 'source <(kubectl completion zsh)' >> ~/.zshrc
 ```
 
 ## context
