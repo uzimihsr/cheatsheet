@@ -16,6 +16,12 @@ $ kubectl config current-context
 $ kubectl config use-context context-abc
 ```
 
+## namespace
+```
+# namespaceを変更
+$ kubectl config set-context $(kubectl config current-context) --namespace=sapmle_namespace
+```
+
 ## resource
 ```
 # マニフェストを用いたリソースの作成/更新(manifest-abc.yamlを使用する例)
