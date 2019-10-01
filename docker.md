@@ -7,6 +7,9 @@ $ docker build -t name:tag .
 
 # Dockerfileを指定してイメージをビルド(Dockerfile-sampleを使用する例)
 $ docker build -t name:tag -f Dockerfile-sample
+
+# イメージを実行
+$ docker run name:tag
 ```
 
 ## container
