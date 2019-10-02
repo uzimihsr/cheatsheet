@@ -28,4 +28,7 @@ $ docker stop CONTAINER_ID
 
 # コンテナの削除(コンテナIDがCONTAINER_IDのものを削除)
 $ docker rm CONTAINER_ID
+
+# 停止したコンテナの一括削除
+$ docker container prune
 ```
