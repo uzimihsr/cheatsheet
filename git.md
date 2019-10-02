@@ -20,3 +20,8 @@ $ git clone https://user:password@github.com/path/to/repo.git
 ###### いい感じの.gitignoreを生成する
 [gitignore.io](https://www.gitignore.io/)
 使う言語とかOSを入力するだけで必要な.gitignoreをすぐ生成してくれる.  
+
+###### リモートリポジトリの登録(origin)
+```
+$ git remote add origin REPO_URL
+```
