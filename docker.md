@@ -10,6 +10,12 @@ $ docker build -t name:tag -f Dockerfile-sample
 
 # イメージを実行
 $ docker run name:tag
+
+# イメージ一覧
+$ docker images
+
+# イメージ削除
+$ docker rmi IMAGE_ID
 ```
 
 ## container
