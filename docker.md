@@ -16,6 +16,9 @@ $ docker images
 
 # イメージ削除
 $ docker rmi IMAGE_ID
+
+# 一時的にイメージに入る
+$ docker run --rm -it IMAGE_NAME /bin/bash
 ```
 
 ## container
@@ -31,4 +34,7 @@ $ docker rm CONTAINER_ID
 
 # 停止したコンテナの一括削除
 $ docker container prune
+
+# コンテナに入る(コンテナのbashを起動)
+$ docker exec -it CONTAINER_NAME bash
 ```
