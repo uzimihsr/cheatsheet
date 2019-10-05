@@ -25,6 +25,8 @@ $ docker run --rm -it IMAGE_NAME /bin/bash
 ```
 # コンテナ一覧の確認
 $ docker ps -a
+# または
+$ docker container ls
 
 # コンテナの停止(コンテナIDがCONTAINER_IDのものを停止)
 $ docker stop CONTAINER_ID
