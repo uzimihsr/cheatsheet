@@ -13,9 +13,16 @@ $ docker run name:tag
 
 # イメージ一覧
 $ docker images
+# または
+$ docker image ls -a
 
 # イメージ削除
 $ docker rmi IMAGE_ID
+# または
+$ docker image rm IMAGE_ID
+
+# イメージ全削除
+$ docker image rm $(docker image ls -a -q)
 
 # 一時的にイメージに入る
 $ docker run --rm -it IMAGE_NAME /bin/bash
@@ -26,13 +33,20 @@ $ docker run --rm -it IMAGE_NAME /bin/bash
 # コンテナ一覧の確認
 $ docker ps -a
 # または
-$ docker container ls
+$ docker container ls -a
 
 # コンテナの停止(コンテナIDがCONTAINER_IDのものを停止)
 $ docker stop CONTAINER_ID
+# または
+$ docker container stop CONTAINER_ID
 
 # コンテナの削除(コンテナIDがCONTAINER_IDのものを削除)
 $ docker rm CONTAINER_ID
+# または
+$ docker container rm CONTAINER_ID
+
+# コンテナの全削除
+$ docker container rm $(docker container ls -a -q)
 
 # 停止したコンテナの一括削除
 $ docker container prune
