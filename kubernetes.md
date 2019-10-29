@@ -65,6 +65,9 @@ $ kubectl exec -it pod-abc /bin/bash
 # ログを流す(pod-abcのログを見る例)
 $ kubectl logs pod-abc -f
 
+# Pod内のコンテナを指定してログを見る
+$ kubectl logs pod-abc -c container-abc
+
 # コンテナにファイルをコピー(ローカルのlocalfileをpod-abcの/tmp/newfileとしてコピーする例)
 $ kubectl cp localfile pod-abc:/tmp/newfile
 
