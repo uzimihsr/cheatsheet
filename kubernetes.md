@@ -25,6 +25,12 @@ $ kubectl config use-context context-abc
 $ kubectl config set-context $(kubectl config current-context) --namespace=sapmle_namespace
 ```
 
+## event
+```
+# クラスタのイベントを表示
+$ kubectl get events
+```
+
 ## resource
 ```
 # マニフェストを用いたリソースの作成/更新(manifest-abc.yamlを使用する例)
