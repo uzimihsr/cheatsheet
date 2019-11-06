@@ -3,43 +3,51 @@
 ## image
 ```
 # 現在のディレクトリにあるDockerfileでイメージをビルド
-# reponame:tagをつける
-$ docker image build -t reponame:tag .
+$ docker image build -t <REPOSITORY>:<TAG> .
 
-# Dockerfileを指定してイメージをビルド(Dockerfile-sampleを使用する例)
-# reponame:tagをつける
-$ docker image build -t reponame:tag -f Dockerfile-sample
+# Dockerfileを指定してイメージをビルド
+$ docker image build -t <REPOSITORY>:<TAG> -f <PATH_TO_DOCKERFILE>
 
 # Docker Hub用にイメージにタグを付け直す
-# ローカルのrepo_old:1.0にdocker_id/repo_new:2.0タグをつける
-$ docker image tag repo_old:1.0 docker_id/repo_new:2.0
+$ docker image tag <REPOSITORY>:<TAG> <DOCKER_HUB_ID>/<REPOSITORY>:<TAG>
 
 # 全イメージを表示
 $ docker image ls -a
 
 # イメージ削除
-$ docker image rm IMAGE_ID
+$ docker image rm <IMAGE_ID>
+$ docker image rm <REPOSITORY>:<TAG>
 
 # イメージ全削除
 $ docker image rm $(docker image ls -a -q)
 
 # 一時的にイメージ(IMAGE_NAME)に入る
-$ docker container run --rm -it IMAGE_NAME /bin/bash
+# 厳密には使い切りのコンテナを起動してbashを呼び出している
+$ docker container run --rm -it <IMAGE_ID> /bin/bash
+$ docker container run --rm -it <REPOSITORY>:<TAG> /bin/bash
+
+# イメージからDockerfileの内容を(ほぼ)復元
+$ docker image history <IMAGE_ID>
+$ docker image history <REPOSITORY>:<TAG>
 ```
 
 ## container
 ```
-# イメージ(reponame:tag)を使用してコンテナを起動
-$ docker container run reponame:tag
+# イメージを使用してコンテナを起動
+$ docker container run <IMAGE_ID>
+$ docker container run <REPOSITORY>:<TAG>
+
+# ポートを指定してコンテナを起動(ローカルマシンの8080番をコンテナの80番に割当)
+$ docker container run -p 8080:80 <REPOSITORY>:<TAG>
 
 # コンテナ一覧の確認
 $ docker container ls -a
 
 # コンテナの停止(コンテナIDがCONTAINER_IDのものを停止)
-$ docker container stop CONTAINER_ID
+$ docker container stop <CONTAINER_ID>
 
 # コンテナの削除(コンテナIDがCONTAINER_IDのものを削除)
-$ docker container rm CONTAINER_ID
+$ docker container rm <CONTAINER_ID>
 
 # コンテナの全削除
 $ docker container rm $(docker container ls -a -q)
@@ -48,5 +56,5 @@ $ docker container rm $(docker container ls -a -q)
 $ docker container prune
 
 # コンテナに入る(コンテナのbashを起動)
-$ docker exec -it CONTAINER_ID bash
+$ docker exec -it <CONTAINER_ID> bash
 ```
