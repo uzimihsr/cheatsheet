@@ -15,14 +15,14 @@ $ kubectl config get-context
 # 現在のcontextを確認
 $ kubectl config current-context
 
-# contextの切り替え(context-abcに切り替える例)
-$ kubectl config use-context context-abc
+# contextの切り替え
+$ kubectl config use-context $CONTEXT_NAME
 ```
 
 ## namespace
 ```
 # namespaceを変更
-$ kubectl config set-context $(kubectl config current-context) --namespace=sapmle_namespace
+$ kubectl config set-context $(kubectl config current-context) --namespace=$NAMESPACE
 ```
 
 ## event
@@ -33,18 +33,17 @@ $ kubectl get events
 
 ## resource
 ```
-# マニフェストを用いたリソースの作成/更新(manifest-abc.yamlを使用する例)
-# createよりapplyのほうが使い勝手が良い
-$ kubectl apply -f manifest-abc.yaml
+# マニフェスト(manifest.yaml)を用いたリソースの作成/更新
+$ kubectl apply -f manifest.yaml
 
 # 同じ階層にある全てのマニフェストを用いたリソースの作成/更新
 $ kubectl apply -f ./
 
-# マニフェストを用いたリソースの削除(manifest-abc.yamlを使用する例)
-$ kubectl delete -f manifest-abc.yaml
+# マニフェスト(manifest.yaml)を用いたリソースの削除
+$ kubectl delete -f manifest.yaml
 
-# リソースの種類と名前を指定したリソースの削除(pod-abcという名前のpodを削除する例)
-$ kubectl delete pod pod-abc
+# リソースの種類と名前を指定したリソースの削除
+$ kubectl delete $RESOURCE_TYPE $RESOURCE_NAME
 
 # 全てのリソースを表示
 $ kubectl get all
@@ -52,62 +51,62 @@ $ kubectl get all
 
 ## Pod
 ```
-# podの一覧表示
+# Podの一覧表示
 $ kubectl get pods
 
-# podの状態をyaml形式で出力(pod-abcを見る)
-$ kubectl get pods pod-abc -o yaml
+# Podの状態をyaml形式で出力
+$ kubectl get pods $POD_NAME -o yaml
 
-# 作成されたpodの編集(vimでpod-abcを編集する場合)
+# 作成されたPodの編集(vimを使用)
 $ export EDITOR=vim
-$ kubectl edit pod pod-abc
+$ kubectl edit pod $POD_NAME
 
-# podの情報を見る(pod-abcを見る場合)
-$ kubectl describe pod pod-abc
+# Podの情報を見る
+$ kubectl describe pod $POD_NAME
 
-# podに入る(pod-abcでbashを使う)
-$ kubectl exec -it pod-abc /bin/bash
+# Podに入る
+$ kubectl exec -it $POD_NAME /bin/bash
 
-# ログを流す(pod-abcのログを見る例)
-$ kubectl logs pod-abc -f
+# Podのログを流す
+$ kubectl logs $POD_NAME -f
 
 # Pod内のコンテナを指定してログを見る
-$ kubectl logs pod-abc -c container-abc
+$ kubectl logs $POD_NAME -c $CONTAINER_NAME
 
-# コンテナにファイルをコピー(ローカルのlocalfileをpod-abcの/tmp/newfileとしてコピーする例)
-$ kubectl cp localfile pod-abc:/tmp/newfile
+# コンテナにファイルをコピー(ローカルのファイルをPodにコピーする例)
+$ kubectl cp $LOCAL_FILE $POD_NAME:$PATH_TO_FILE
 
-# コンテナへのポート転送(localhost:8888をpod-abcの80へ転送)
+# コンテナへのポート転送(localhost:8888をPodの80番ポートへ転送)
 # Ctrl + Cで終了
-$ kubectl port-forward pod-abc 8888:80
+$ kubectl port-forward $POD_NAME 8888:80
 ```
 
 ## ReplicaSet
 ```
-# ReplicaSetの詳細情報を見る(rs-abcを見る)
-$ kubectl describe rs rs-abc
+# ReplicaSetの詳細情報を見る
+$ kubectl describe rs $REPLICA_SET_NAME
 
-# レプリカ数の変更(rs-abcのレプリカ数を5に変更)
-$ kubectl scale rs rs-abc --replicas 5
+# レプリカ数の変更
+$ kubectl scale rs $REPLICA_SET_NAME --replicas $NUM_REPLICA
 ```
 
 ## Deployment
 ```
 # コンテナイメージを更新する(deployment-abcで使用するイメージnginx-containerをnginx:1.13に更新する)
-$ kubectl set image deployment deployment-abc nginx-container=nginx:1.13
+$ kubectl set image deployment $DEPLOYMENT_NAME $IMAGE_NAME=$REPOSITORY:$TAG
 
 # アップデートの状況を見る(deployment-abcの状況を見る)
-$ kubectl rollout status deployment deployment-abc
+$ kubectl rollout status deployment $DEPLOYMENT_NAME
 
 # アップデート履歴を見る(deployment-abcの履歴を見る)
-$ kubectl rollout history deployment deployment-abc
+$ kubectl rollout history deployment $DEPLOYMENT_NAME
 
 # 1つ前のrevisionにロールバックする
-$ kubectl rollout undo deployment deployment-abc
+$ kubectl rollout undo deployment $DEPLOYMENT_NAME
 ```
 
 ## CronJob
 ```
 # CronJobを一時停止する
-$ kubectl patch cronjob cronjob-abc -p '{"spec":{"suspend":true}}'
+$ kubectl patch cronjob $CRONJOB_NAME -p '{"spec":{"suspend":true}}'
 ```
