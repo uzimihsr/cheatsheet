@@ -16,19 +16,26 @@ $ kubectl config get-context
 $ kubectl config current-context
 
 # contextの切り替え
-$ kubectl config use-context $CONTEXT_NAME
+$ kubectl config use-context <CONTEXT_NAME>
 ```
 
 ## namespace
 ```
 # namespaceを変更
-$ kubectl config set-context $(kubectl config current-context) --namespace=$NAMESPACE
+$ kubectl config set-context $(kubectl config current-context) --namespace=<NAMESPACE>
 ```
 
 ## event
 ```
 # クラスタのイベントを表示
 $ kubectl get events
+```
+
+## proxy
+```
+# ローカルマシンからKubernetes APIに接続するためのproxyを起動
+$ kubectl proxy
+# 使い終わったらCtrl + Cで終了
 ```
 
 ## resource
@@ -43,10 +50,16 @@ $ kubectl apply -f ./
 $ kubectl delete -f manifest.yaml
 
 # リソースの種類と名前を指定したリソースの削除
-$ kubectl delete $RESOURCE_TYPE $RESOURCE_NAME
+$ kubectl delete <RESOURCE_TYPE> <RESOURCE_NAME>
 
 # 全てのリソースを表示
 $ kubectl get all
+
+# リソースの詳細を表示
+$ kubectl describe <RESOURCE_TYPE> <RESOURCE_NAME>
+
+# リソースの種類を指定して一覧を表示
+$ kubectl get <RESOURCE_TYPE>
 ```
 
 ## Pod
@@ -54,59 +67,77 @@ $ kubectl get all
 # Podの一覧表示
 $ kubectl get pods
 
+# Podの一覧表示(情報が増える)
+$ kubectl get pods -o wide
+
+# ラベルで指定してPodを取得
+$ kubectl get pods -l <LABEL_KEY>=<LABEL_VALUE>
+
 # Podの状態をyaml形式で出力
-$ kubectl get pods $POD_NAME -o yaml
+$ kubectl get pods <POD_NAME> -o yaml
 
 # 作成されたPodの編集(vimを使用)
 $ export EDITOR=vim
-$ kubectl edit pod $POD_NAME
+$ kubectl edit pod <POD_NAME>
+
+# Podにラベルを付与
+$ kubectl label pod <POD_NAME> <LABEL_KEY>=<LABEL_VALUE>
 
 # Podの情報を見る
-$ kubectl describe pod $POD_NAME
+$ kubectl describe pod <POD_NAME>
 
 # Podに入る
-$ kubectl exec -it $POD_NAME /bin/bash
+$ kubectl exec -it <POD_NAME> /bin/bash
 
 # Podのログを流す
-$ kubectl logs $POD_NAME -f
+$ kubectl logs <POD_NAME> -f
 
 # Pod内のコンテナを指定してログを見る
-$ kubectl logs $POD_NAME -c $CONTAINER_NAME
+$ kubectl logs <POD_NAME> -c <CONTAINER_NAME>
 
 # コンテナにファイルをコピー(ローカルのファイルをPodにコピーする例)
-$ kubectl cp $LOCAL_FILE $POD_NAME:$PATH_TO_FILE
+$ kubectl cp <LOCAL_FILE> <POD_NAME>:<PATH_TO_FILE>
 
 # コンテナへのポート転送(localhost:8888をPodの80番ポートへ転送)
 # Ctrl + Cで終了
-$ kubectl port-forward $POD_NAME 8888:80
+$ kubectl port-forward <POD_NAME> 8888:80
 ```
 
 ## ReplicaSet
 ```
-# ReplicaSetの詳細情報を見る
-$ kubectl describe rs $REPLICA_SET_NAME
-
 # レプリカ数の変更
-$ kubectl scale rs $REPLICA_SET_NAME --replicas $NUM_REPLICA
+$ kubectl scale rs <REPLICA_SET_NAME> --replicas <NUM_REPLICAS>
 ```
 
 ## Deployment
 ```
-# コンテナイメージを更新する(deployment-abcで使用するイメージnginx-containerをnginx:1.13に更新する)
-$ kubectl set image deployment $DEPLOYMENT_NAME $IMAGE_NAME=$REPOSITORY:$TAG
+# マニフェストファイルを使わずにDeploymentを作成
+$ kubectl create deployment <DEPLOYMENT_NAME> --image=<REPOSITPRY>:<TAG>
 
-# アップデートの状況を見る(deployment-abcの状況を見る)
-$ kubectl rollout status deployment $DEPLOYMENT_NAME
+# Deploymentで使用しているイメージを更新する
+$ kubectl set image deployment <DEPLOYMENT_NAME> <IMAGE_NAME>=<REPOSITORY>:<TAG>
 
-# アップデート履歴を見る(deployment-abcの履歴を見る)
-$ kubectl rollout history deployment $DEPLOYMENT_NAME
+# Deploymentのレプリカ数を変更する
+$ kubectl scale deployments/<DEPLOYMENT_NAME> --replicas=<NUM_REPLICAS>
+
+# アップデートの状況を見る
+$ kubectl rollout status deployment <DEPLOYMENT_NAME>
+
+# アップデート履歴を見る
+$ kubectl rollout history deployment <DEPLOYMENT_NAME>
 
 # 1つ前のrevisionにロールバックする
-$ kubectl rollout undo deployment $DEPLOYMENT_NAME
+$ kubectl rollout undo deployment <DEPLOYMENT_NAME>
+```
+
+## Service
+```
+# マニフェストファイルを使わずにNodePort Serviceを作成
+$ kubectl expose deployment/<DEPLOYMENT_NAME> --type="NodePort" --port 8080
 ```
 
 ## CronJob
 ```
 # CronJobを一時停止する
-$ kubectl patch cronjob $CRONJOB_NAME -p '{"spec":{"suspend":true}}'
+$ kubectl patch cronjob <CRONJOB_NAME> -p '{"spec":{"suspend":true}}'
 ```
