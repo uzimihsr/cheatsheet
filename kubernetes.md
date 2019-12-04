@@ -141,3 +141,9 @@ $ kubectl expose deployment/<DEPLOYMENT_NAME> --type="NodePort" --port 8080
 # CronJobを一時停止する
 $ kubectl patch cronjob <CRONJOB_NAME> -p '{"spec":{"suspend":true}}'
 ```
+
+## stern
+```
+# Podのログを時刻付きで出力する
+$ stern -t <POD_NAME_QUERY>
+```
