@@ -1,14 +1,14 @@
 # Kubernetes cheatsheet
 
 ## autocompletion
-```
+```bash
 # zshで補完を効かせる
 $ source <(kubectl completion zsh)
 $ echo 'source <(kubectl completion zsh)' >> ~/.zshrc
 ```
 
 ## context
-```
+```bash
 # contextの一覧を表示
 $ kubectl config get-context
 
@@ -20,26 +20,26 @@ $ kubectl config use-context <CONTEXT_NAME>
 ```
 
 ## namespace
-```
+```bash
 # namespaceを変更
 $ kubectl config set-context $(kubectl config current-context) --namespace=<NAMESPACE>
 ```
 
 ## event
-```
+```bash
 # クラスタのイベントを表示
 $ kubectl get events
 ```
 
 ## proxy
-```
+```bash
 # ローカルマシンからKubernetes APIに接続するためのproxyを起動
 $ kubectl proxy
 # 使い終わったらCtrl + Cで終了
 ```
 
 ## resource
-```
+```bash
 # マニフェスト(manifest.yaml)を用いたリソースの作成/更新
 $ kubectl apply -f manifest.yaml
 
@@ -63,7 +63,7 @@ $ kubectl get <RESOURCE_TYPE>
 ```
 
 ## Pod
-```
+```bash
 # Podの一覧表示
 $ kubectl get pods
 
@@ -104,13 +104,13 @@ $ kubectl port-forward <POD_NAME> 8888:80
 ```
 
 ## ReplicaSet
-```
+```bash
 # レプリカ数の変更
 $ kubectl scale rs <REPLICA_SET_NAME> --replicas <NUM_REPLICAS>
 ```
 
 ## Deployment
-```
+```bash
 # マニフェストファイルを使わずにDeploymentを作成
 $ kubectl create deployment <DEPLOYMENT_NAME> --image=<REPOSITPRY>:<TAG>
 
@@ -131,13 +131,19 @@ $ kubectl rollout undo deployment <DEPLOYMENT_NAME>
 ```
 
 ## Service
-```
+```bash
 # マニフェストファイルを使わずにNodePort Serviceを作成
 $ kubectl expose deployment/<DEPLOYMENT_NAME> --type="NodePort" --port 8080
 ```
 
-## CronJob
+## Job
+```bash
+# CronJobからJobを生成する
+$ kubectl create job <JOB_NAME> --from=cronjob/<CRONJOB_NAME>
 ```
+
+## CronJob
+```bash
 # CronJobを一時停止する
 $ kubectl patch cronjob <CRONJOB_NAME> -p '{"spec":{"suspend":true}}'
 ```
