@@ -10,6 +10,8 @@ $ dig -x <IP_ADDRESS>
 
 ## yum
 ```bash
+# 利用可能なパッケージを全部並べる
+$ yum list
 # 指定したパッケージの利用可能なバージョンを全て表示する
-$ yum search --showduplicates <PACKAGE_NAME>
+$ yum list --showduplicates <PACKAGE_NAME>
 ```
