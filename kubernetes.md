@@ -149,7 +149,7 @@ $ kubectl patch cronjob <CRONJOB_NAME> -p '{"spec":{"suspend":true}}'
 ```
 
 ## stern
-```
+```bash
 # Podのログを時刻付きで出力する
 $ stern -t <POD_NAME_QUERY>
 ```
