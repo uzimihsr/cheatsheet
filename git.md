@@ -8,9 +8,9 @@
 $ git clone https://github.com/path/to/repo.git
 $ cd repo
 
-# このリポジトリ限定でユーザ名とメールアドレスを設定
-$ git config --local user.name uzimihsr
-$ git config --local user.email uzimihsr@gmail.com
+# このリポジトリ限定でGithubのユーザ名とメールアドレスを設定
+$ git config --local user.name <USERNAME>
+$ git config --local user.email <MAIL_ADDRESS>
 
 # 以降はPushの時にパスワードを求められる
 $ git push origin master
