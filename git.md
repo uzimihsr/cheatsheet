@@ -1,5 +1,23 @@
 # Git cheatsheet
 
+## repository
+
+リポジトリごとにアカウントを使い分ける  
+```bash
+# httpsでclone
+$ git clone https://github.com/path/to/repo.git
+$ cd repo
+
+# このリポジトリ限定でユーザ名とメールアドレスを設定
+$ git config --local user.name uzimihsr
+$ git config --local user.email uzimihsr@gmail.com
+
+# 以降はPushの時にパスワードを求められる
+$ git push origin master
+Username for 'https://github.com':
+Password for 'https://username@github.com':
+```
+
 ###### リモートも含めた全ブランチの確認
 `-a`オプションでリモートブランチも含めて全部表示する.  
 ```
