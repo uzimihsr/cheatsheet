@@ -20,4 +20,5 @@ $ yum list --showduplicates <PACKAGE_NAME>
 ```bash
 # 特定の列だけ抜き出す
 $ echo "a b c d e" | awk '{print $1,$4}'
+a d
 ```
