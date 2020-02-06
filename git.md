@@ -2,44 +2,35 @@
 
 ## repository
 
-リポジトリごとにアカウントを使い分ける  
 ```bash
-# httpsでclone
+# リポジトリごとにアカウントを使い分ける  
+## httpsでcloneする(重要)
 $ git clone https://github.com/path/to/repo.git
 $ cd repo
-
-# このリポジトリ限定でGithubのユーザ名とメールアドレスを設定
+## このリポジトリ限定でGithubのユーザ名とメールアドレスを設定
 $ git config --local user.name <USERNAME>
 $ git config --local user.email <MAIL_ADDRESS>
-
-# 以降はPushの時にパスワードを求められる
+## 以降はPushの時にパスワードを求められる
 $ git push origin master
 Username for 'https://github.com':
 Password for 'https://username@github.com':
+
+# リモートリポジトリの登録(origin)
+$ git remote add origin <REPO_URL>
 ```
 
-###### リモートも含めた全ブランチの確認
-`-a`オプションでリモートブランチも含めて全部表示する.  
-```
+## branch
+```bash
+# リモートも含めた全ブランチの確認
 $ git branch -a
-```
 
-###### リモートブランチにローカルでチェックアウトする
-```
+# リモートブランチにローカルでチェックアウトする
 $ git checkout -b branchname remotes/origin/branchname
+
+# 2つのブランチの差分を表示する
+$ git diff <BRANCH_A> <BRANCH_B>
 ```
 
-###### リポジトリごとにGitアカウントを使い分ける
-リポジトリURLの前にアカウントとパスワードを記述する.  
-```
-$ git clone https://user:password@github.com/path/to/repo.git
-```
-
-###### いい感じの.gitignoreを生成する
-[gitignore.io](https://www.gitignore.io/)
-使う言語とかOSを入力するだけで必要な.gitignoreをすぐ生成してくれる.  
-
-###### リモートリポジトリの登録(origin)
-```
-$ git remote add origin REPO_URL
-```
+## .gitignore
+[gitignore.io](https://www.gitignore.io/)  
+使う言語とかOSを入力するだけでいい感じの.gitignoreをすぐ生成してくれる.  
