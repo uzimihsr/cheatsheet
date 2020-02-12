@@ -1,5 +1,13 @@
 # linux cheatsheet
 
+## file
+```bash
+# ディレクトリごと差分を表示する
+$ diff -r <DIRECTORY_A> <DIRECTORY_B>
+# 差分があったファイル名だけ表示する
+$ diff -r <DIRECTORY_A> <DIRECTORY_B>
+```
+
 ## network
 ```bash
 # 正引き
