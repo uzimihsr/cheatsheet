@@ -6,6 +6,8 @@
 $ diff -r <DIRECTORY_A> <DIRECTORY_B>
 # 差分があったファイル名だけ表示する
 $ diff -r <DIRECTORY_A> <DIRECTORY_B>
+# ファイルの差分をvimでみる
+$ vim -d <FILE_A> <FILE_B>
 ```
 
 ## network
