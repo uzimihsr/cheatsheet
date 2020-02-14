@@ -27,8 +27,12 @@ $ git branch -a
 # リモートブランチにローカルでチェックアウトする
 $ git checkout -b branchname remotes/origin/branchname
 
-# 2つのブランチの差分を表示する
+# 2つのブランチの差分を表示する(コミットを比較)
 $ git diff <BRANCH_A> <BRANCH_B>
+
+# 強制的にリモートブランチと同じ状態にする
+$ git reset --hard origin/<BRANCH_NAME>
+
 ```
 
 ## .gitignore
