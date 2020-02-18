@@ -1,7 +1,7 @@
 # Docker cheatsheet
 
 ## image
-```
+```bash
 # 現在のディレクトリにあるDockerfileでイメージをビルド
 $ docker image build -t <REPOSITORY>:<TAG> .
 
@@ -32,7 +32,7 @@ $ docker image history <REPOSITORY>:<TAG>
 ```
 
 ## container
-```
+```bash
 # イメージを使用してコンテナを起動
 $ docker container run <IMAGE_ID>
 $ docker container run <REPOSITORY>:<TAG>
