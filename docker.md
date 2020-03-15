@@ -11,6 +11,9 @@ $ docker image build -t <REPOSITORY>:<TAG> -f <PATH_TO_DOCKERFILE>
 # Docker Hub用にイメージにタグを付け直す
 $ docker image tag <REPOSITORY>:<TAG> <DOCKER_HUB_ID>/<REPOSITORY>:<TAG>
 
+# Docker Hubにイメージをプッシュ
+$ docker image push <DOCKER_HUB_ID>/<REPOSITORY>:<TAG>
+
 # 全イメージを表示
 $ docker image ls -a
 
