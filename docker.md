@@ -22,9 +22,9 @@ $ docker image rm <REPOSITORY>:<TAG>
 $ docker image rm $(docker image ls -a -q)
 
 # 一時的にイメージ(IMAGE_NAME)に入る
-# 厳密には使い切りのコンテナを起動してbashを呼び出している
-$ docker container run --rm -it <IMAGE_ID> /bin/bash
-$ docker container run --rm -it <REPOSITORY>:<TAG> /bin/bash
+# 厳密には使い切りのコンテナを起動してENTRYPOINTを消してbashを呼び出している
+$ docker container run --rm -it --entrypoint='' <IMAGE_ID> /bin/bash
+$ docker container run --rm -it --entrypoint='' <REPOSITORY>:<TAG> /bin/bash
 
 # イメージからDockerfileの内容を(ほぼ)復元
 $ docker image history <IMAGE_ID>
