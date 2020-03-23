@@ -32,3 +32,9 @@ $ yum list --showduplicates <PACKAGE_NAME>
 $ echo "a b c d e" | awk '{print $1,$4}'
 a d
 ```
+
+## service
+```bash
+# 特定のUnitのログを見る
+$ journalctl -xe -u <UNIT_NAME>
+```
