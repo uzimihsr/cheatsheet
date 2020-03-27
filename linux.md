@@ -13,9 +13,9 @@ $ vim -d <FILE_A> <FILE_B>
 ## network
 ```bash
 # 正引き
-$ dig <HOST_NAME>
+$ dig <HOST_NAME> +short
 # 逆引き
-$ dig -x <IP_ADDRESS>
+$ dig -x <IP_ADDRESS> +short
 ```
 
 ## yum
