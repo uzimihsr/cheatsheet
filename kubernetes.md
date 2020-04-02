@@ -10,7 +10,7 @@ $ echo 'source <(kubectl completion zsh)' >> ~/.zshrc
 ## context
 ```bash
 # contextの一覧を表示
-$ kubectl config get-context
+$ kubectl config get-contexts
 
 # 現在のcontextを確認
 $ kubectl config current-context

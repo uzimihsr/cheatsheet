@@ -13,9 +13,9 @@ $ vim -d <FILE_A> <FILE_B>
 ## network
 ```bash
 # 正引き
-$ dig <HOST_NAME>
+$ dig <HOST_NAME> +short
 # 逆引き
-$ dig -x <IP_ADDRESS>
+$ dig -x <IP_ADDRESS> +short
 ```
 
 ## yum
@@ -31,4 +31,10 @@ $ yum list --showduplicates <PACKAGE_NAME>
 # 特定の列だけ抜き出す
 $ echo "a b c d e" | awk '{print $1,$4}'
 a d
+```
+
+## service
+```bash
+# 特定のUnitのログを見る
+$ journalctl -xe -u <UNIT_NAME>
 ```
