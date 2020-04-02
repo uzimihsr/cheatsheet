@@ -101,6 +101,9 @@ $ kubectl cp <LOCAL_FILE> <POD_NAME>:<PATH_TO_FILE>
 # コンテナへのポート転送(localhost:8888をPodの80番ポートへ転送)
 # Ctrl + Cで終了
 $ kubectl port-forward <POD_NAME> 8888:80
+
+# 使い捨てのPodを作成して入る
+$ kubectl run --image=<IMAGE_NAME>:<IMAGE_TAG> --restart=Never --rm -it test-pod /bin/bash
 ```
 
 ## ReplicaSet
