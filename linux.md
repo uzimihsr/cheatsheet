@@ -8,6 +8,8 @@ $ diff -r <DIRECTORY_A> <DIRECTORY_B>
 $ diff -r <DIRECTORY_A> <DIRECTORY_B>
 # ファイルの差分をvimでみる
 $ vim -d <FILE_A> <FILE_B>
+# ディレクトリの合計サイズを確認
+$ du -sh <DIRECTORY>
 ```
 
 ## network
