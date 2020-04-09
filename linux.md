@@ -18,6 +18,10 @@ $ du -sh <DIRECTORY>
 $ dig <HOST_NAME> +short
 # 逆引き
 $ dig -x <IP_ADDRESS> +short
+# 一時的にHTTPサーバを立てる(確認できたらCtrl+Cで終了)
+$ nc -kl <PORT>
+# ポートスキャンを行う
+$ nv -vz <IP_ADDRESS> <PORT>
 ```
 
 ## yum
