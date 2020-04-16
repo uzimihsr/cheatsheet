@@ -149,6 +149,8 @@ $ kubectl create job <JOB_NAME> --from=cronjob/<CRONJOB_NAME>
 ```bash
 # CronJobを一時停止する
 $ kubectl patch cronjob <CRONJOB_NAME> -p '{"spec":{"suspend":true}}'
+# マニフェストファイルなしでCronJobを作成する
+$ kubectl create cronjob <CRONJOB_NAME> --image=<IMAGE_NAME> --schedule="*/5 * * * *" --restart=Never -- <COMMAND>
 ```
 
 ## stern
